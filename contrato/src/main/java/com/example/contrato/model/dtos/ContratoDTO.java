@@ -16,20 +16,22 @@ public class ContratoDTO {
 
     private LocalDate dataFim;
 
-    private float valorContratado;
-
     private int numEndereco;
 
     private String complementoEnd;
 
     private Long idEndereco;
 
-    private Long idempresa;
+    private Long idLogradouro;
+    private Long idCidade;
+    private Long idBairro;
+    // private String cep;
+
+    private Long idEmpresa;
 
     private Long idRepresentante;
 
     private Long idGestor;
 
-    @OneToMany(mappedBy = "contrato", cascade = {CascadeType.REMOVE})
-    private List<ItemContrato> itensContratados;
+    private List<ItemContratoDTO> itensContrato;
 }

@@ -24,10 +24,4 @@ public class EmpresaContratada {
     @ManyToOne
     @JoinColumn(name="fk_endereco")
     private Endereco endereco;
-
-    @OneToMany(mappedBy = "empresaContratada")
-    private List<Contrato> contratos;
-
-    @OneToMany(mappedBy = "empresa")
-    private List<RepEmpContratada> representante;
 }

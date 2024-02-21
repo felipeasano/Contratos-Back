@@ -1,17 +1,13 @@
-package com.example.contrato.model;
+package com.example.contrato.model.dtos;
 
+import com.example.contrato.model.Contrato;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
 
-@Entity
 @Data
-public class ItemContrato {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ItemContratoDTO {
 
     private String descricao;
 

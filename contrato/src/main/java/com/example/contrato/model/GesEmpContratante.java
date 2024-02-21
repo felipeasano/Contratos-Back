@@ -21,7 +21,4 @@ public class GesEmpContratante {
     @ManyToOne
     @JoinColumn(name = "fk_endereco")
     private Endereco endereco;
-
-    @OneToMany(mappedBy = "gesEmpContratante")
-    private List<Contrato> contratos;
 }

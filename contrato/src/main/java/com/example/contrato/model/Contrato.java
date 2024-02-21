@@ -26,7 +26,7 @@ public class Contrato {
 
     private String complementoEnd;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="fk_endereco")
     private Endereco endereco;
 
@@ -42,6 +42,7 @@ public class Contrato {
     @JoinColumn(name = "fk_gesEmpContratante")
     private GesEmpContratante gesEmpContratante;
 
-    @OneToMany(mappedBy = "contrato", cascade = {CascadeType.REMOVE})
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "fk_contrato")
     private List<ItemContrato> itensContratados;
 }

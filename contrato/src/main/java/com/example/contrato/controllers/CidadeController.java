@@ -33,6 +33,7 @@ public class CidadeController {
         cidade.setNome((cidadeform.getNome()));
         cidade.setUnidadeFederacao(ufOpt.get());
         cidade = cidadeRepository.save(cidade);
+
         return ResponseEntity.ok(cidade);
     }
 

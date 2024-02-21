@@ -1,8 +1,11 @@
 package com.example.contrato.controllers;
 
 import com.example.contrato.model.EmpresaContratada;
+import com.example.contrato.model.Endereco;
 import com.example.contrato.model.RepEmpContratada;
+import com.example.contrato.model.dtos.EmpresaContratadaDTO;
 import com.example.contrato.repositories.EmpresaContratadaRepository;
+import com.example.contrato.repositories.EnderecoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +19,25 @@ import java.util.Optional;
 public class EmpresaContratadaController {
 
     private final EmpresaContratadaRepository empresaContratadaRepository;
+    private final EnderecoRepository enderecoRepository;
 
     @PostMapping
-    public ResponseEntity<EmpresaContratada> create(@RequestBody EmpresaContratada empresaform){
-        EmpresaContratada empresa = empresaContratadaRepository.save(empresaform);
+    public ResponseEntity<EmpresaContratada> create(@RequestBody EmpresaContratadaDTO empresaform){
+        Optional<Endereco> enderecoOpt = enderecoRepository.findById(empresaform.getIdEndereco());
+
+        if(!enderecoOpt.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
+
+        EmpresaContratada empresa = new EmpresaContratada();
+
+        empresa.setEndereco(enderecoOpt.get());
+        empresa.setCnpj(empresaform.getCnpj());
+        empresa.setNome(empresaform.getNome());
+        empresa.setNumEnd(empresaform.getNumEnd());
+        empresa.setComplementoEnd(empresaform.getComplementoEnd());
+
+        empresa = empresaContratadaRepository.save(empresa);
         return ResponseEntity.ok(empresa);
     }
 

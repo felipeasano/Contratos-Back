@@ -15,18 +15,6 @@ public class Endereco {
 
     private String cep;
 
-    @OneToMany(mappedBy = "endereco")
-    private List<Contrato> contratos;
-
-    @OneToMany(mappedBy = "endereco")
-    private List<EmpresaContratada> empresasContratadas;
-
-    @OneToMany(mappedBy = "endereco")
-    private List<RepEmpContratada> repEmpContratada;
-
-    @OneToMany(mappedBy = "endereco")
-    private List<GesEmpContratante> gesEmpContratante;
-
     @ManyToOne
     @JoinColumn(name = "fk_cidade")
     private Cidade cidade;

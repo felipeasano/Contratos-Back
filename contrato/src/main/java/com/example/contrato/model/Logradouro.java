@@ -17,4 +17,6 @@ public class Logradouro {
     @ManyToOne
     @JoinColumn(name = "fk_tipoLogradouro")
     private TipoLogradouro tipoLogradouro;
+
+
 }
